@@ -3,18 +3,31 @@ import FunctionComponent from './components/FunctionComponent';
 import './App.css';
 
 function App() {
+  const listaFesta = [
+    {nome: 'Nicolas', estaNaLista: true, tarefa: 'batata-frita'},
+    {nome: 'Pedro', estaNaLista: false, tarefa: 'pizza'},
+    {nome: 'Carolina', estaNaLista: true, tarefa: 'bebidas'}
+  ]
   
   return (
     <div className="container">
       <div className="container-lista">
         <h3>Convidado:</h3>
-        <ClasseComponent nome="Nicolas" estaNaLista={true} />
-        <ClasseComponent nome="Pedro" estaNaLista={false} />
-        <ClasseComponent nome="Carolina" estaNaLista={true} />
+        {
+          listaFesta.map(({nome, estaNaLista}) => {
+            return (
+              <ClasseComponent key={nome} nome={nome} estaNaLista={estaNaLista} />
+            )
+          })
+        }
         <h3>Tarefas: </h3>
-        <FunctionComponent nome="Nicolas" tarefa="batata-frita" />
-        <FunctionComponent nome="Pedro" tarefa="pizza" />
-        <FunctionComponent nome="Carolina" tarefa="bebidas" />
+        {
+          listaFesta.map(({nome, tarefa}) => {
+            return (
+              <FunctionComponent key={nome} nome={nome} tarefa={tarefa} />
+            )
+          })
+        }
       </div>
     </div>
   );
